@@ -33,7 +33,7 @@ const TransactionForm = ({ onClose }) => {
     const { name, value } = e.target
     setForm((prev) => {
       const updated = { ...prev, [name]: value }
-   
+
       if (name === 'type') {
         updated.category = CATEGORIES[value][0]
       }
@@ -67,8 +67,7 @@ const TransactionForm = ({ onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
-      <div className="bg-[#1a1d27] border border-white/10 rounded-2xl w-full max-w-md p-6 relative">
-        {/* Header */}
+      <div className="bg-[#1a1d27] border border-white/10 rounded-2xl w-full max-w-md p-5 sm:p-6 relative max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-base font-semibold text-white">
             Add Transaction
@@ -82,7 +81,6 @@ const TransactionForm = ({ onClose }) => {
         </div>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          {/* Type toggle */}
           <div>
             <label className={labelClass}>Type</label>
             <div className="flex gap-2">
@@ -107,7 +105,6 @@ const TransactionForm = ({ onClose }) => {
             </div>
           </div>
 
-          {/* Title */}
           <div>
             <label className={labelClass}>Title</label>
             <input
@@ -119,7 +116,6 @@ const TransactionForm = ({ onClose }) => {
             />
           </div>
 
-          {/* Amount */}
           <div>
             <label className={labelClass}>Amount (Rs)</label>
             <input
@@ -134,7 +130,6 @@ const TransactionForm = ({ onClose }) => {
             />
           </div>
 
-          {/* Category */}
           <div>
             <label className={labelClass}>Category</label>
             <select
@@ -151,7 +146,6 @@ const TransactionForm = ({ onClose }) => {
             </select>
           </div>
 
-          {/* Date */}
           <div>
             <label className={labelClass}>Date</label>
             <input

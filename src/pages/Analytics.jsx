@@ -46,11 +46,10 @@ const CustomTooltip = ({ active, payload, label }) => {
 const Analytics = () => {
   const transactions = useStore((state) => state.transactions)
 
-  // ── Monthly income vs expense ──────────────────────────────────
   const monthlyData = useMemo(() => {
     const map = {}
     transactions.forEach((t) => {
-      const month = t.date?.slice(0, 7) // "YYYY-MM"
+      const month = t.date?.slice(0, 7)
       if (!month) return
       if (!map[month]) map[month] = { month, income: 0, expense: 0 }
       map[month][t.type] += t.amount
@@ -66,7 +65,6 @@ const Analytics = () => {
       }))
   }, [transactions])
 
-  // ── Expense by category ────────────────────────────────────────
   const categoryData = useMemo(() => {
     const map = {}
     transactions
@@ -77,7 +75,6 @@ const Analytics = () => {
     return Object.entries(map).map(([name, value]) => ({ name, value }))
   }, [transactions])
 
-  // ── Savings rate trend ─────────────────────────────────────────
   const savingsData = useMemo(() => {
     const map = {}
     transactions.forEach((t) => {
@@ -100,7 +97,6 @@ const Analytics = () => {
       }))
   }, [transactions])
 
-  // ── Overall savings rate card ──────────────────────────────────
   const totalIncome = transactions
     .filter((t) => t.type === 'income')
     .reduce((s, t) => s + t.amount, 0)
@@ -127,11 +123,10 @@ const Analytics = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-10 space-y-6">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-24 sm:py-24 space-y-6">
       <h1 className="text-xl font-semibold text-white">Analytics</h1>
 
-      {/* Savings rate card */}
-      <div className="bg-[#1a1d27] border border-white/8 rounded-xl p-5 flex items-center justify-between">
+      <div className="bg-[#1a1d27] border border-white/8 rounded-xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">
             Overall Savings Rate
@@ -144,14 +139,13 @@ const Analytics = () => {
             {overallRate}%
           </p>
         </div>
-        <div className="text-right text-xs text-gray-500 space-y-1">
+        <div className="sm:text-right text-xs text-gray-500 space-y-1">
           <p>Income: {fmt(totalIncome)}</p>
           <p>Expense: {fmt(totalExpense)}</p>
           <p>Saved: {fmt(totalIncome - totalExpense)}</p>
         </div>
       </div>
 
-      {/* Income vs Expense bar chart */}
       <div className="bg-[#1a1d27] border border-white/8 rounded-xl p-5">
         <p className="text-sm font-semibold text-white mb-4">
           Income vs Expense — Monthly
@@ -191,9 +185,7 @@ const Analytics = () => {
         </ResponsiveContainer>
       </div>
 
-      {/* Category pie + savings rate line — side by side on md+ */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Expense by category */}
         <div className="bg-[#1a1d27] border border-white/8 rounded-xl p-5">
           <p className="text-sm font-semibold text-white mb-4">
             Expenses by Category
@@ -243,7 +235,6 @@ const Analytics = () => {
           )}
         </div>
 
-        {/* Savings rate trend */}
         <div className="bg-[#1a1d27] border border-white/8 rounded-xl p-5">
           <p className="text-sm font-semibold text-white mb-4">
             Savings Rate Trend

@@ -25,39 +25,24 @@ const features = [
     description: 'Monthly trends and category breakdown charts.',
     route: '/analytics',
   },
- 
 ]
 
 export default function Home() {
   const navigate = useNavigate()
 
   return (
-    <div className="min-h-screen bg-[#0f1117] text-white">
-      <section className="flex flex-col items-center justify-center text-center px-6 pt-28 pb-20">
-        <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-4">
+    <div className="bg-[#0f1117] text-white">
+      <section className="flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-32 sm:pt-28 pb-2 sm:pb-4">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight mb-4">
           Your money, clearly.
         </h1>
-        <p className="text-gray-400 text-base sm:text-lg max-w-md mb-10">
+        <p className="text-gray-400 text-sm sm:text-base md:text-lg max-w-md mb-4 sm:mb-6">
           Track income and expenses, visualize trends, and stay on top of your
           finances.
         </p>
-        <div className="flex gap-3 flex-wrap justify-center">
-          <button
-            onClick={() => navigate('/dashboard')}
-            className="px-5 py-2.5 rounded-lg border border-white/20 text-sm font-medium hover:bg-white/10 transition-colors"
-          >
-            Open dashboard
-          </button>
-          <button
-            onClick={() => navigate('/transactions')}
-            className="px-5 py-2.5 rounded-lg border border-white/20 text-sm font-medium hover:bg-white/10 transition-colors"
-          >
-            Add transaction
-          </button>
-        </div>
       </section>
 
-      <section className="max-w-4xl mx-auto px-6 pb-24">
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 pb-10 sm:pb-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {features.map(({ icon: Icon, title, description, route }) => (
             <div
