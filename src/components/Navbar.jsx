@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 
@@ -42,9 +42,13 @@ const Navbar = () => {
       }`}
     >
       <div className="flex items-center justify-between px-6 py-4">
-        <h1 className="text-lg font-bold">
+        <Link
+          to="/"
+          className="text-lg font-bold select-none tracking-tight"
+          onClick={() => setOpen(false)}
+        >
           Cash<span className="text-green-400">Flow</span>
-        </h1>
+        </Link>
 
         <div className="hidden md:flex gap-2">
           {links.map(({ to, label, end }) => (
