@@ -54,8 +54,9 @@ The layout establishes a structured navigation shell (`Navbar` and `Footer`) aro
 
 ### Localized Currency Format
 The codebase automatically applies regional formatting configurations matching banking conventions (`en-NP`) to display values correctly across standard text outputs:
-```javascript const fmt = (n) => 'Rs ' + n.toLocaleString('en-NP', { minimumFractionDigits: 2 })
-```
+```javascript
+ const fmt = (n) => 'Rs ' + n.toLocaleString('en-NP', { minimumFractionDigits: 2 })
+
 
 
 Analytical FormulationsTo maintain stutter-free runtime rendering when sorting large datasets, complex historical transformations are processed safely inside performance-optimized React lifecycle layers:Monthly Aggregations: Transaction logs are mapped by year/month string segments (YYYY-MM) and sorted lexicographically to map linear chart baselines.Savings Ratios: Calculated globally across current records using mathematical evaluation formulas:$$\text{Savings Rate} = \left( \frac{\text{Total Income} - \text{Total Expense}}{\text{Total Income}} \right) \times 100$$
